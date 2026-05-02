@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIMEM — AI Memory Price Index | Agentic Sciences</title>
+    <link rel="canonical" href="https://agentic-sciences.github.io/aimem" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .index-hero { text-align: center; padding: 60px 24px 40px; }
+        .index-value { font-size: 72px; font-weight: 700; letter-spacing: -3px; margin: 16px 0 4px; }
+        .index-change { font-size: 20px; font-weight: 500; }
+        .index-change.up { color: #16a34a; }
+        .index-change.down { color: #dc2626; }
+        .index-meta { font-size: 13px; color: var(--text-muted); margin-top: 8px; }
+        
+        .comp-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+        .comp-table th { text-align: left; font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; padding: 8px 12px; border-bottom: 2px solid var(--border); }
+        .comp-table td { padding: 12px; border-bottom: 1px solid var(--border); font-size: 14px; }
+        .comp-table tr:hover { background: var(--bg-subtle); }
+        .weight-bar { height: 6px; border-radius: 3px; background: #e5e5e5; position: relative; }
+        .weight-fill { height: 100%; border-radius: 3px; }
+        
+        .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        @media (max-width: 640px) { .method-grid { grid-template-columns: 1fr; } }
+        .method-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+        .method-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+        .method-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
+        
+        .supply-chain { margin: 32px 0; }
+        .chain-row { display: flex; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+        .chain-node { border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 16px; flex: 1; min-width: 180px; }
+        .chain-node h4 { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+        .chain-node ul { list-style: none; }
+        .chain-node li { font-size: 13px; color: var(--text-secondary); padding: 2px 0; }
+        .chain-node li strong { color: var(--text); }
+        
+        .figure-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0; }
+        @media (max-width: 640px) { .figure-grid { grid-template-columns: 1fr; } }
+        .figure-item { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+        .figure-item img { width: 100%; display: block; }
+        .figure-caption { padding: 12px; font-size: 12px; color: var(--text-muted); }
+        
+        .ticker-badge { display: inline-block; font-family: monospace; background: #111; color: #fff; padding: 4px 12px; border-radius: 4px; font-size: 13px; letter-spacing: 1px; }
+        
+        .use-cases { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+        @media (max-width: 640px) { .use-cases { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="https://agentic-sciences.github.io/" class="nav-brand">Agentic Sciences</a>
+        <div class="nav-links">
+            <a href="https://agentic-sciences.github.io/">Home</a>
+            <a href="https://agentic-sciences.github.io/architecture">Architecture</a>
+            <a href="https://agentic-sciences.github.io/research">Research</a>
+            <a href="#" class="active">AIMEM</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero -->
+<div class="index-hero">
+    <span class="hero-badge">On-Chain Memory Price Index</span>
+    <h1 style="font-size:36px; letter-spacing:-1.5px; margin-bottom:4px;">AIMEM</h1>
+    <p style="font-size:15px; color:var(--text-muted);">AI Memory Price Index — The world's first tradeable memory chip price benchmark</p>
+    
+    <div class="index-value" id="index-value">119.08</div>
+    <div class="index-change up" id="index-change">+19.08% YTD</div>
+    <div class="index-meta">Base: 100.00 (Jan 1, 2026) · Updated: May 2, 2026 · <span class="ticker-badge">vntl:AIMEM</span></div>
+    
+    <div class="hero-stats" style="margin-top:32px;">
+        <div class="stat"><div class="stat-number">4</div><div class="stat-label">Components</div></div>
+        <div class="stat"><div class="stat-number">22</div><div class="stat-label">Price Points</div></div>
+        <div class="stat"><div class="stat-number">24/7</div><div class="stat-label">Trading</div></div>
+        <div class="stat"><div class="stat-number">$0</div><div class="stat-label">No DRAM Futures Exist</div></div>
+    </div>
+</div>
+
+<!-- Why AIMEM -->
+<section class="section section-alt">
+    <div class="container">
+        <h2 class="section-title">Why AIMEM?</h2>
+        <p class="section-desc">Memory semiconductors are the most cyclical and supply-constrained component of the AI compute stack. Yet no tradeable instrument tracks chip prices directly.</p>
+        
+        <div class="method-grid">
+            <div class="method-card">
+                <h3>🚫 No DRAM Futures</h3>
+                <p>CME, SGX — all attempts to launch DRAM futures have failed. There is no exchange-traded memory commodity instrument anywhere in the world.</p>
+            </div>
+            <div class="method-card">
+                <h3>📈 Memory Supercycle</h3>
+                <p>Q2 2026: DRAM contract prices +58-63% QoQ. HBM sold out through 2026. NAND contracts +70-75% QoQ. The biggest memory boom in history — and no way to trade it directly.</p>
+            </div>
+            <div class="method-card">
+                <h3>🔗 First On-Chain</h3>
+                <p>AIMEM is the world's first on-chain memory price index, deployed on Hyperliquid via HIP-3 as a perpetual contract. Trade memory prices 24/7 with up to 10x leverage.</p>
+            </div>
+            <div class="method-card">
+                <h3>📊 Real Prices, Not Stocks</h3>
+                <p>Unlike the DRAM ETF (which tracks stock prices), AIMEM tracks actual chip spot prices from TrendForce DRAMeXchange — the industry standard.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Index Composition -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Index Composition</h2>
+        <p class="section-desc">Weighted basket of memory chip spot prices, reflecting AI-era demand patterns.</p>
+        
+        <table class="comp-table">
+            <thead>
+                <tr>
+                    <th>Component</th>
+                    <th>Weight</th>
+                    <th>Base (Jan '26)</th>
+                    <th>Current</th>
+                    <th>Change</th>
+                    <th>Data Source</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>DDR5 16Gb Spot</strong></td>
+                    <td>35%</td>
+                    <td>$28.00</td>
+                    <td>$37.20</td>
+                    <td style="color:#16a34a">+32.9%</td>
+                    <td>TrendForce</td>
+                </tr>
+                <tr>
+                    <td><strong>HBM Proxy</strong></td>
+                    <td>30%</td>
+                    <td>100.00</td>
+                    <td>131.72</td>
+                    <td style="color:#16a34a">+31.7%</td>
+                    <td>Stock basket</td>
+                </tr>
+                <tr>
+                    <td><strong>NAND 512Gb TLC</strong></td>
+                    <td>20%</td>
+                    <td>$22.00</td>
+                    <td>$20.60</td>
+                    <td style="color:#dc2626">-6.4%</td>
+                    <td>TrendForce</td>
+                </tr>
+                <tr>
+                    <td><strong>DDR4 16Gb Spot</strong></td>
+                    <td>15%</td>
+                    <td>$34.00</td>
+                    <td>$32.50</td>
+                    <td style="color:#dc2626">-4.4%</td>
+                    <td>TrendForce</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3 style="font-size:15px; font-weight:600; margin:32px 0 12px;">HBM Proxy Construction</h3>
+        <p style="font-size:14px; color:var(--text-secondary); line-height:1.7;">
+            Since HBM chips have no public spot price, we construct a proxy from memory stock prices weighted by HBM market share:
+            <strong>50% SK Hynix</strong> (62% HBM share) + <strong>25% Samsung</strong> (17%→30%) + <strong>25% Micron</strong> (21%).
+        </p>
+    </div>
+</section>
+
+<!-- Supply Chain -->
+<section class="section section-alt">
+    <div class="container">
+        <h2 class="section-title">Memory Supply Chain</h2>
+        <p class="section-desc">The companies that make, package, and consume the memory chips AIMEM tracks.</p>
+        
+        <div class="supply-chain">
+            <div class="chain-row">
+                <div class="chain-node">
+                    <h4>🏭 DRAM/HBM Makers</h4>
+                    <ul>
+                        <li><strong>SK Hynix</strong> — 62% HBM share</li>
+                        <li><strong>Samsung</strong> — 17%→30% HBM</li>
+                        <li><strong>Micron (MU)</strong> — 21% HBM</li>
+                    </ul>
+                </div>
+                <div class="chain-node">
+                    <h4>💾 NAND Makers</h4>
+                    <ul>
+                        <li><strong>Samsung</strong> — 31% share</li>
+                        <li><strong>Kioxia</strong> — 17%</li>
+                        <li><strong>Western Digital</strong> — 15%</li>
+                        <li><strong>Micron</strong> — 11%</li>
+                    </ul>
+                </div>
+                <div class="chain-node">
+                    <h4>⚙️ Equipment</h4>
+                    <ul>
+                        <li><strong>ASML</strong> — EUV lithography</li>
+                        <li><strong>Applied Materials</strong> — Deposition</li>
+                        <li><strong>Lam Research</strong> — Etch</li>
+                        <li><strong>Tokyo Electron</strong> — Coat/develop</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="chain-row">
+                <div class="chain-node">
+                    <h4>📦 Packaging</h4>
+                    <ul>
+                        <li><strong>ASE (ASEH)</strong> — HBM packaging</li>
+                        <li><strong>Amkor (AMKR)</strong> — Advanced pkg</li>
+                    </ul>
+                </div>
+                <div class="chain-node">
+                    <h4>🖥️ Key Customers</h4>
+                    <ul>
+                        <li><strong>Nvidia</strong> — #1 HBM buyer</li>
+                        <li><strong>AMD</strong> — HBM/DDR5</li>
+                        <li><strong>Apple</strong> — LPDDR5</li>
+                        <li><strong>Cloud (AWS/GCP/Azure)</strong></li>
+                    </ul>
+                </div>
+                <div class="chain-node">
+                    <h4>📊 Data Sources</h4>
+                    <ul>
+                        <li><strong>TrendForce</strong> — Spot prices</li>
+                        <li><strong>Silicon Data</strong> — GDDR6 index</li>
+                        <li><strong>IBKR/Pyth</strong> — Stock data</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Charts -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Live Data</h2>
+        <p class="section-desc">Real-time scraped from TrendForce DRAMeXchange and stock exchanges.</p>
+        
+        <div class="figure-grid">
+            <div class="figure-item">
+                <img src="figures/aimem_overview.png" alt="AIMEM Overview">
+                <div class="figure-caption">Index composition, component changes, YTD trajectory, and live chip prices.</div>
+            </div>
+            <div class="figure-item">
+                <img src="figures/aimem_trendforce_ranges.png" alt="TrendForce Price Ranges">
+                <div class="figure-caption">DRAM spot price high/low/average ranges from TrendForce live scrape.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Use Cases -->
+<section class="section section-alt">
+    <div class="container">
+        <h2 class="section-title">Use Cases</h2>
+        
+        <div class="use-cases">
+            <div class="card">
+                <div class="card-icon">🛡️</div>
+                <h3>Hedging</h3>
+                <p>Memory chip buyers (OEMs, cloud providers) hedge procurement costs. Manufacturers hedge revenue exposure.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📈</div>
+                <h3>Speculation</h3>
+                <p>Trade memory supercycles. Express views on AI compute demand. Bet on supply shortages.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🔬</div>
+                <h3>Research</h3>
+                <p>Study commodity price discovery on-chain. Cross-asset correlation with NVDA, AI tokens.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contract Specs -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Contract Specifications</h2>
+        
+        <table class="comp-table">
+            <tbody>
+                <tr><td><strong>Ticker</strong></td><td>vntl:AIMEM</td></tr>
+                <tr><td><strong>Underlying</strong></td><td>AIMEM Index (memory chip price basket)</td></tr>
+                <tr><td><strong>Settlement</strong></td><td>USDH (USD-pegged stablecoin)</td></tr>
+                <tr><td><strong>Max Leverage</strong></td><td>10x</td></tr>
+                <tr><td><strong>OI Cap</strong></td><td>$10,000,000</td></tr>
+                <tr><td><strong>Mark Band</strong></td><td>±20% of oracle</td></tr>
+                <tr><td><strong>Trading Hours</strong></td><td>24/7/365</td></tr>
+                <tr><td><strong>Platform</strong></td><td>Hyperliquid (HIP-3)</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- Methodology -->
+<section class="section section-alt">
+    <div class="container">
+        <h2 class="section-title">Methodology</h2>
+        <p class="section-desc">Transparent, reproducible, and fully documented.</p>
+        
+        <div class="arch-block">
+            <p><strong>Index Formula:</strong></p>
+            <p style="font-family:monospace; margin:12px 0; font-size:14px;">
+                AIMEM_t = 100 × Σ(w_i × P_i_t / P_i_base)
+            </p>
+            <p>Where w_i are component weights, P_i_t is the current price, and P_i_base is the January 1, 2026 price.</p>
+        </div>
+        
+        <div class="arch-block" style="margin-top:16px;">
+            <p><strong>Oracle Architecture:</strong></p>
+            <p style="margin-top:8px;">
+                Data Layer (TrendForce scraper + stock APIs) → Computation Layer (AIMEM engine) → On-Chain Layer (Hyperliquid HIP-3 oracle push every 3 seconds).
+            </p>
+        </div>
+        
+        <div style="margin-top:24px;">
+            <a href="https://github.com/Agentic-Sciences/aimem" class="btn btn-secondary">View Whitepaper →</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer style="padding:32px 24px; border-top:1px solid var(--border); text-align:center;">
+    <p style="font-size:12px; color:var(--text-muted);">
+        AIMEM is a research product of <a href="https://agentic-sciences.github.io/" style="color:var(--text)">Agentic Sciences</a>. Not financial advice.
+        <br>Data sources: TrendForce DRAMeXchange · Silicon Data · IBKR · Pyth Network
+        <br>Built on <a href="https://hyperliquid.xyz" style="color:var(--text)" target="_blank">Hyperliquid</a> HIP-3
+    </p>
+</footer>
+
+</body>
+</html>
